@@ -44,12 +44,23 @@ def parseLogFile(file):
 		},
 		"mappings": {
 				"properties": {
-					"unixts": {
-						"type": "date"
-					},
-                                        "client_ip": {
-                                            "type": "ip"
-                                        }
+					"unixts": { "type": "date" },
+                                        "client_ip": { "type": "ip" },
+                                        "host_ip": { "type": "ip" },
+                                        "request": { "properties": {
+                                            "headers":{ "properties": {
+                                                "x-forwarded-for": { "type": "ip" },
+                                                "x-real-ip": { "type": "ip" }
+                                                } }
+                                            } },
+                                        "response": { "properties": {
+                                            "headers": { "properties": {
+                                                "date": {"type": "date"},
+                                                "expires": {"type": "date"},
+                                                "http_code": {"type": "keyword"}
+                                            } }
+                                        } }
+                                        
 				}
 		}
 	}
