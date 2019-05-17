@@ -48,11 +48,9 @@ def parseLogFile(file):
 					"unixts": {
 						"type": "date"
 					},
-                                        {
-                                            "client_ip": {
-                                                "type": "ip"
-                                                }
-                                            }
+                                        "client_ip": {
+                                            "type": "ip"
+                                        }
 				}
 			}
 		}
