@@ -56,7 +56,6 @@ def parseLogFile(file):
                                         "response": { "properties": {
                                             "headers": { "properties": {
                                                 "date": {"type": "date"},
-                                                "expires": {"type": "date"},
                                                 "http_code": {"type": "keyword"}
                                             } }
                                         } }
