@@ -110,7 +110,7 @@ def parseLogFile(file):
 		es.indices.create(index=index, ignore=400, body=settings)
 
 	# write the log
-	res = es.index(index=index, doc_type="modsecurity", body=d['transaction'])
+	res = es.index(index=index, body=d['transaction'])
 
 	# check if log has been created
 	if res['result'] == 'created':		
