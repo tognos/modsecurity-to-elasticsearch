@@ -43,7 +43,6 @@ def parseLogFile(file):
 			"number_of_replicas": 0
 		},
 		"mappings": {
-			"modsecurity": {
 				"properties": {
 					"unixts": {
 						"type": "date"
@@ -52,7 +51,6 @@ def parseLogFile(file):
                                             "type": "ip"
                                         }
 				}
-			}
 		}
 	}
 
