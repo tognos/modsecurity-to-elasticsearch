@@ -14,13 +14,13 @@ from datetime import datetime,date
 from elasticsearch import Elasticsearch
 
 # Please, check the elasticsearch URL below:
-es = Elasticsearch(['http://127.0.0.1:9200'])
+es = Elasticsearch([os.environ.get('ES_URL')])
 
 # parse arguments
 opts, args = getopt.getopt(sys.argv[1:],"hd:",["help","log-directory="])
 for i in opts:
-	if i[0] == "-d" or i[0] == "--log-directory":
-		basedir = i[1]
+    if i[0] == "-d" or i[0] == "--log-directory":
+        basedir = i[1]
 
 # set headers name to lowercase
 def renameKeys(iterable):
