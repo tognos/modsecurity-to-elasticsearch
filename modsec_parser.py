@@ -55,7 +55,7 @@ def parseLogFile(file):
                                             } },
                                         "response": { "properties": {
                                             "headers": { "properties": {
-                                                "http_code": {"type": "keyword"}
+                                                "http_code": {"type": "text"}
                                             } }
                                         } }
                                         
