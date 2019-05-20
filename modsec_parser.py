@@ -47,14 +47,14 @@ def parseLogFile(file):
 					"unixts": { "type": "date" },
                                         "client_ip": { "type": "ip" },
                                         "host_ip": { "type": "ip" },
-                                        "request": { "properties": {
-                                            "headers":{ "properties": {
+                                        "request": { "type": "nested", "properties": {
+                                            "headers":{ "type": "nested", "properties": {
                                                 "x-forwarded-for": { "type": "ip" },
                                                 "x-real-ip": { "type": "ip" }
                                                 } }
                                             } },
-                                        "response": { "properties": {
-                                            "headers": { "properties": {
+                                        "response": { "type": "nested", "properties": {
+                                            "headers": { "type": "nested", "properties": {
                                                 "http_code": {"type": "text"}
                                             } }
                                         } }
