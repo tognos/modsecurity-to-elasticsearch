@@ -55,7 +55,7 @@ def parseLogFile(file):
                                             } },
                                         "response": { "type": "nested", "properties": {
                                             "headers": { "type": "nested", "properties": {
-                                                "http_code": {"type": "text"}
+                                                "http_code": {"type": "keyword"}
                                             } }
                                         } }
                                         
