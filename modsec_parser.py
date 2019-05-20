@@ -40,16 +40,26 @@ def parseLogFile(file):
 	settings = {
 		"settings": {
 			"number_of_shards": 1,
-			"number_of_replicas": 0
+			"number_of_replicas": 1
 		},
 		"mappings": {
-			"modsecurity": {
 				"properties": {
-					"unixts": {
-						"type": "date"
-					}
+					"unixts": { "type": "date" },
+                                        "client_ip": { "type": "ip" },
+                                        "host_ip": { "type": "ip" },
+                                        "request": { "type": "nested", "properties": {
+                                            "headers":{ "type": "nested", "properties": {
+                                                "x-forwarded-for": { "type": "ip" },
+                                                "x-real-ip": { "type": "ip" }
+                                                } }
+                                            } },
+                                        "response": { "type": "nested", "properties": {
+                                            "headers": { "type": "nested", "properties": {
+                                                "http_code": {"type": "keyword"}
+                                            } }
+                                        } }
+                                        
 				}
-			}
 		}
 	}
 
@@ -109,7 +119,7 @@ def parseLogFile(file):
 		es.indices.create(index=index, ignore=400, body=settings)
 
 	# write the log
-	res = es.index(index=index, doc_type="modsecurity", body=d['transaction'])
+	res = es.index(index=index, body=d['transaction'])
 
 	# check if log has been created
 	if res['result'] == 'created':		
