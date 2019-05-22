@@ -1,6 +1,6 @@
 FROM python:2-alpine
 
-RUN apk add --update-cache git  && pip install elasticsearch certifi && mkdir /modsecurity-to-elasticsearch
+RUN pip install elasticsearch certifi && mkdir /modsecurity-to-elasticsearch
 
 ADD modsec_parser.py /modsecurity-to-elasticsearch
 
